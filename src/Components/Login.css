@@ -1,0 +1,23 @@
+.main-div{
+    margin-top:3%;
+    padding: 10% 3% 9% 0%;
+    border: 2px solid black;
+}
+
+
+label{
+    padding: 2% 0 0 0;
+    font-size: 1em;
+}
+input{
+    font-size: 2em;
+}
+
+.btn{
+    margin-left: 41%;
+    margin-top: 3%;
+    padding-left: 4%;
+    padding-right: 4%;
+    font-size: 1.2em;
+}
+
