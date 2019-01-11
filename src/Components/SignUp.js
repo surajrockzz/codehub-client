@@ -46,7 +46,7 @@ class SignUp extends Component{
     
     submitDetails(){
         console.log(this.state)
-        axios.post(urls.apisignup, {
+        axios.post(urls.apiusers, {
                 date_of_birth:this.state.dob,
                 email: this.state.email,
                 password: this.state.password,
@@ -65,7 +65,7 @@ class SignUp extends Component{
             <div className="main">
                 <div className="responsivePair">
                     <div className="imgContainer">
-                        <img className="imageC" alt="marketingImage" src="https://cdn.pixabay.com/photo/2017/07/31/11/31/laptop-2557468_1280.jpg"/>
+                        <img className="imageC" alt="marketingImage" src="https://https://cdn.pixabay.com/photo/2018/02/27/17/40/programming-3186084_1280.png.pixabay.com/photo/2017/07/31/11/31/laptop-2557468_1280.jpg"/>
                     </div>
                     <div className="fieldContainer">
                          <h3>SignUp</h3>
