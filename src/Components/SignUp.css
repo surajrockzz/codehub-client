@@ -1,0 +1,25 @@
+.main{
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.responsivePair{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.fieldContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.imageC{
+    width:50%;
+}

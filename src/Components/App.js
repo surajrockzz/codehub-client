@@ -7,19 +7,21 @@ import Home from './Home.js'
 import Login from './Login.js'
 import SignUp from './SignUp.js'
 import Test from './Test.js'
-import Header from './Header.js'
+import NavbarCom from './NavbarCom.js'
 import DashBoard from './Dashboard.js'
+import Logout from './Logout.js' 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div>
-            <Header/>
+            <NavbarCom token={window.localStorage.getItem("JWT")}/>
             <Route exact path="/" component={Home}/>
-            <Route path="/dashboard" component={DashBoard}/>
+            <Route path="/dashboard" render={(props) => <DashBoard {...props} isAuthed={true} token={window.localStorage.getItem("JWT")} />}/>
             <Route path="/login" component={Login}/>
             <Route path="/signup" component={SignUp}/>
             <Route path="/test" component={Test}/>
+            <Route path="/logout" component={Logout}/>
         </div>
       </BrowserRouter>
     );

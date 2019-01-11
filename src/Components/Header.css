@@ -1,0 +1,16 @@
+.totaldiv {
+    background-color: #544f7b;
+    color: #ffffff;
+}
+
+.svgdiv {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
