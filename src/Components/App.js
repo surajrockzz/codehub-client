@@ -11,8 +11,7 @@ import NavbarCom from './NavbarCom.js'
 import DashBoard from './Dashboard.js'
 import Logout from './Logout.js'
 import users from './users.js'
-import assignmentsList from './assignmentsList.js'
-//import assignmentDetail from './assignmentDetail.js'
+import AssignmentsList from './assignmentsList.js'
 class App extends Component {
   render() {
     return (
@@ -26,8 +25,7 @@ class App extends Component {
             <Route path="/test" component={Test}/>
             <Route path="/logout" component={Logout}/>
             <Route path="/users" component={users}/>
-            <Route path="/assignments" component={assignmentsList}/>
-        
+            <Route path="/assignments" render={(props) => <AssignmentsList {...props}  token={window.localStorage.getItem("JWT")}/>}/>
         </div>
       </BrowserRouter>
     );
