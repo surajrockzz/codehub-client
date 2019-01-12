@@ -10,7 +10,7 @@ class AssignmentCard extends React.Component{
     render(){
    return(
         <div className="contentDiv"> 
-            <h3>{this.props.data.title}</h3>
+           <a href={"/assignments/"+this.props.data.id} key={this.props.data.id}> <h3>{this.props.data.title}</h3></a>
             <h4>{this.props.data.owner}</h4>
         </div>
    )

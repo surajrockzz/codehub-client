@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import AssignmentCard from './AssignmentCard'
 import urls from './backendurls'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form, FormGroup } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, FormGroup } from 'reactstrap';
 import jwt from 'jsonwebtoken'
 
 class AssignmentsList extends React.Component{
@@ -21,7 +21,7 @@ class AssignmentsList extends React.Component{
         this.createAssignment = this.createAssignment.bind(this);
     }
         renderLists(){
-            return this.state.assignmentsList.map( assignment =>  <AssignmentCard data={assignment}/>)
+            return this.state.assignmentsList.map( assignment =>  <AssignmentCard data={assignment} key={assignment.id}/>)
         }
         toggle() {
             this.setState({
@@ -42,7 +42,7 @@ class AssignmentsList extends React.Component{
             })  
             .then((response)=>{
                     if(response.status > 199){
-                        console.log(response)
+                        window.location="/assignments/"+response.data.id;
                     }
             })
             .catch((error)=>{

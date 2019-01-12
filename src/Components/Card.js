@@ -19,7 +19,7 @@ class Card extends React.Component{
                 </div>
             </div>
             <div className="imagesdiv">
-                <img src="https://picsum.photos/100?random" className="imgdim"/>
+                <img src="https://picsum.photos/100?random" alt="sample" className="imgdim"/>
             </div>
         </div>
    )
