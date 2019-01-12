@@ -1,44 +1,19 @@
 import React from 'react'
 import './users.css'
 import urls from './backendurls.js'
-
-class ContentDiv extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={
-            button:''
-        }
-    }
-    render(){
-   return(
-        <div className="contentDiv"> 
-            <div className="info">
-                <p>suraj</p>
-                <p>suraj penugonda</p>
-                <div className="buttonsDiv">
-                    <button type="button">Admin</button>
-                    <button type="button">Staff</button>
-                </div>
-            </div>
-            <div className="imagesdiv">
-                <img src="https://picsum.photos/100?random" className="imgdim"/>
-            </div>
-        </div>
-   )
-    }
-
-}
+import Card from './Card.js'
 
 class users extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            list:''
+            list:urls.sampledata
         }
         this.renderContent = this.renderContent.bind(this)
+        
     }
-    renderContent() {
-         return 
+    renderContent(){
+     return this.state.list.map(usr => <Card data={usr} />)
     }
     render(){
         return(
@@ -48,7 +23,7 @@ class users extends React.Component{
                 <button type="button">search</button>
             </div>
             <div className="infContainer">
-              <ContentDiv/>
+              {this.renderContent()}
             </div>    
         </div>
             )
