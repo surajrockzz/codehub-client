@@ -34,9 +34,13 @@ class Test extends Component{
         axios({
             method: this.state.reqType,
             url: this.state.urltextArea,
-            data:JSON.parse(this.state.datatextArea)
-        })
-        
+            data: this.state.datatextArea!==''&&JSON.parse(this.state.datatextArea),
+            headers:{"Authorization":"JWT "+this.props.token}
+        }).then((response)=>{
+            console.log(response.data)
+        }).catch((err)=>{
+        console.log(err)})
+
     }
 
 
