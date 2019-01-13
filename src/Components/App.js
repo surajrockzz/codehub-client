@@ -23,7 +23,7 @@ class App extends Component {
             <Route path="/dashboard" render={(props) => <DashBoard {...props} isAuthed={true} token={window.localStorage.getItem("JWT")} />}/>
             <Route path="/login" component={Login}/>
             <Route path="/signup" component={SignUp}/>
-            <Route path="/test" component={Test}/>
+            <Route path="/test"   render={(props) => <Test {...props}  token={window.localStorage.getItem("JWT")}/>}/>
             <Route path="/logout" component={Logout}/>
             <Route path="/users" component={users}/>
             <Route exact path="/assignments" render={(props) => <AssignmentsList {...props}  token={window.localStorage.getItem("JWT")}/>}/>

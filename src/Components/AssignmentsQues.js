@@ -17,8 +17,8 @@ class AssignmentsQues extends React.Component{
         this.updateValue = this.updateValue.bind(this)
     }
     renderQues(){
-        console.log(this.state.quesList)
-        return this.state.quesList.map(question => (<div key={question.id}><h3>{this.extractTitle.bind(this,question.url)()}</h3> <Button color="primary" onClick={this.changeWindow.bind(this,question.url)} size="sm" >Try</Button></div>))
+
+        return this.state.quesList.map(question => (<div key={question.id}><h3>{this.extractTitle.bind(this,question.url)()}</h3> <Button color="primary" onClick={this.changeWindow.bind(this,{id:question.id,url:question.url})} size="sm" >Try</Button></div>))
     }
     extractTitle(data){
         var str = ''
@@ -50,8 +50,18 @@ class AssignmentsQues extends React.Component{
             newques:e.target.value
         })
     }
-    changeWindow(url){
-        window.open(url)
+    changeWindow(data){
+        axios.get(urls.apiquestionsLink+data.id,{
+                headers: {
+                    "Authorization": "JWT " + this.props.token
+                }
+            })
+        .then((response)=>{
+            window.open(response.data.url)
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
     }
     componentDidMount(){
         axios.get(urls.assignmentsList+"/"+this.props.match.params.id,

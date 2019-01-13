@@ -1,35 +1,63 @@
 import React, { Component } from 'react';
-
+import axios from 'axios'
+import {Label,Input,Button} from 'reactstrap';
 class Test extends Component{
     constructor(props){
         super(props)
         this.state ={
             reqType:"POST",
-            url:"basic"
+            urltextArea:'',
+            datatextArea:''
         }
-        this.updateSelect = this.updateSelect.bind(this);
+        this.updateState = this.updateState.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
-    updateSelect(e){
+    updateState(e){
+        if (e.target.id === "requestType"){
         this.setState({
             reqType:e.target.value
         })
+        }
+        else if (e.target.id === "urltextarea"){
+          this.setState({
+             urltextArea: e.target.value
+          })
+        }
+        else if (e.target.id === "datatextarea") {
+            this.setState({
+                datatextArea: e.target.value
+            })
+        }
     }
+
+    handleClick(){
+        axios({
+            method: this.state.reqType,
+            url: this.state.urltextArea,
+            data:JSON.parse(this.state.datatextArea)
+        })
+        
+    }
+
+
 
     render(){
         return(
         <div className=" container">
             <div className="form-group">
-            <label for="exampleFormControlSelect1">Select Request Type</label>
-            <select className="form-control" id="formcontromselect" onChange = {this.updateSelect} value={this.state.reqType}>
+            <Label for="requestType">Select Request Type</Label>
+            <select className="form-control" id="requestType" onChange = {this.updateState} value={this.state.reqType}>
                 <option>GET</option>
                 <option>POST</option>
                 <option>PATCH</option>
                 <option>PUT</option>
                 <option>DELETE</option>
             </select>
-            <label for="exampleFormControlTextarea1">URL</label>
-                <textarea className="form-control" id="textarea" rows="3"></textarea>
-                <button className="btn btn-lg btn-primary btn-block" type="submit" id="sub">Send</button>
+                <Label for="urltextarea">URL</Label>
+                <Input className="form-control" id="urltextarea" rows="3" value={this.state.urltextArea}type="textarea" onChange={this.updateState}></Input>
+                <Label for="datatextarea">Data</Label>
+                <Input className="form-control" id="datatextarea" rows="3" type="textarea" value={this.state.datatextArea} onChange={this.updateState}></Input>
+                <Button className="primary" id="sub" onClick={this.handleClick}>Send</Button>
             </div>
         </div>
         )
