@@ -15,7 +15,6 @@ class AssignmentsList extends React.Component{
             modal:false
         }
         this.renderLists = this.renderLists.bind(this);
-        //this.addModal = this.addModal.bind(this)
         this.toggle = this.toggle.bind(this)
         this.handleInput = this.handleInput.bind(this)
         this.createAssignment = this.createAssignment.bind(this);
@@ -36,10 +35,10 @@ class AssignmentsList extends React.Component{
         createAssignment(){
             axios.post(urls.assignmentsList,{
                   title:this.state.assignmentName
-              
+
             },{
                 headers:{"Authorization": "JWT " + this.props.token}
-            })  
+            })
             .then((response)=>{
                     if(response.status > 199){
                         window.location="/assignments/"+response.data.id;
@@ -54,14 +53,14 @@ class AssignmentsList extends React.Component{
             const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
             return(<div>
                 <div className="assignmentSearch">
-                   <input type="text"/>    
-                    <button type="button">search</button>
-                   {(token.is_admin||token.is_staff)&& <button type="button" onClick={this.addModal}>add</button>}
+                   <input type="text"/>
+                    <Button type="button">search</Button>
+                   {(token.is_admin||token.is_staff)&&<Button color="danger" onClick={this.toggle}>add</Button> }
                 </div>
                 <div className="assignmentList">
                 {this.state.showQues && this.renderLists()}
                 </div>
-                <Button color="danger" onClick={this.toggle}>modal</Button>
+
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle} close={closeBtn}>Create New Assignment</ModalHeader>
                     <ModalBody>
@@ -76,7 +75,7 @@ class AssignmentsList extends React.Component{
                     </ModalFooter>
                 </Modal>
 
-    
+
             </div>)
         }
         componentDidMount(){
