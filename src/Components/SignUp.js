@@ -55,6 +55,9 @@ class SignUp extends Component{
             })
             .then(function (response) {
                 console.log(response)
+                if(response.status ===201){
+                    window.location='/login'
+                }
             })
             .catch(function (error) {
                 console.log(error);

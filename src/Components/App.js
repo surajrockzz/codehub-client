@@ -10,7 +10,7 @@ import Test from './Test.js'
 import NavbarCom from './NavbarCom.js'
 import DashBoard from './Dashboard.js'
 import Logout from './Logout.js'
-import users from './users.js'
+import Users from './users.js'
 import AssignmentsList from './assignmentsList.js'
 import AssignmentsQues from './AssignmentsQues.js'
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
             <Route path="/signup" component={SignUp}/>
             <Route path="/test"   render={(props) => <Test {...props}  token={window.localStorage.getItem("JWT")}/>}/>
             <Route path="/logout" component={Logout}/>
-            <Route path="/users" component={users}/>
+            <Route path="/users" render={(props) => <Users {...props}  token={window.localStorage.getItem("JWT")}/>}/>
             <Route exact path="/assignments" render={(props) => <AssignmentsList {...props}  token={window.localStorage.getItem("JWT")}/>}/>
             <Route path="/assignments/:id" render={(props) => <AssignmentsQues {...props}  token={window.localStorage.getItem("JWT")}/>}/>
         </div>
