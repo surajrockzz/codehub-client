@@ -1,6 +1,6 @@
 import React from 'react'
 import './users.css'
-import urls from './backendurls.js'
+import urls from '../backendurls.js'
 import Card from './Card.js'
 import axios from 'axios'
 import jwt from 'jsonwebtoken'

@@ -18,6 +18,7 @@
     align-items: center;
     padding-top: 4rem;
     padding-bottom: 4rem;
+    padding-left: 9%;
 }
 .imgContainer{
     width:50%;
@@ -26,4 +27,8 @@
 .imageC{
  width:100%;
  height:auto;   
+}
+
+#signUpbtn{
+    padding:5px;
 }

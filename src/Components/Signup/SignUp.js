@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, FormGroup, Label, Input} from 'reactstrap';
 import axios from 'axios'
 import './SignUp.css'
-import urls from './backendurls.js'
+import urls from '../backendurls.js'
 class SignUp extends Component{
     constructor(props){
         super(props)
@@ -68,7 +68,7 @@ class SignUp extends Component{
             <div className="main">
                 <div className="responsivePair">
                     <div className="imgContainer">
-                        <img className="imageC" alt="marketingImage" src="https://https://cdn.pixabay.com/photo/2018/02/27/17/40/programming-3186084_1280.png.pixabay.com/photo/2017/07/31/11/31/laptop-2557468_1280.jpg"/>
+                      <img src="https://via.placeholder.com/728x728.png"  alt="marketingImage"/>
                     </div>
                     <div className="fieldContainer">
                          <h3>SignUp</h3>
@@ -93,7 +93,7 @@ class SignUp extends Component{
                             <Input type="password" name="password" id="Password" placeholder="Enter password" onChange={this.setValues} value={this.state.password} />
                         </FormGroup>
 
-                        <Button color="primary" onClick={this.submitDetails}>Start Coding Now</Button>
+                        <Button color="primary" id="signUpbtn"  onClick={this.submitDetails}>Start Coding Now</Button>
                     </div>
                 </div>
                 </div>

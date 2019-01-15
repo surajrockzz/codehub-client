@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 import {Label,Input,Button} from 'reactstrap';
+import axios from 'axios'
+
 class Test extends Component{
     constructor(props){
         super(props)

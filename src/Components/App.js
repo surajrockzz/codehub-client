@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-
 import {BrowserRouter,Route} from 'react-router-dom';
 
+import Home from './Home/Home.js'
+import Login from './Login/Login.js'
+import SignUp from './Signup/SignUp.js'
+import Test from './Test/Test.js'
+import NavbarCom from './Navbar/NavbarCom.js'
+import DashBoard from './Dashboard/Dashboard.js'
+import Logout from './Logout/Logout.js'
+import Users from './Users/users.js'
+import AssignmentsList from './assignmentsList/assignmentsList.js'
+import AssignmentsQues from './AssignmentsQues/AssignmentsQues.js'
 import './App.css';
-import Home from './Home.js'
-import Login from './Login.js'
-import SignUp from './SignUp.js'
-import Test from './Test.js'
-import NavbarCom from './NavbarCom.js'
-import DashBoard from './Dashboard.js'
-import Logout from './Logout.js'
-import Users from './users.js'
-import AssignmentsList from './assignmentsList.js'
-import AssignmentsQues from './AssignmentsQues.js'
+
+
 class App extends Component {
   render() {
     return (

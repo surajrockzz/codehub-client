@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button, FormGroup, Label, Input} from 'reactstrap';
 import axios from 'axios'
-import urls from './backendurls.js'
+import urls from '../backendurls.js'
 import './Login.css'
 class Login extends Component{
     constructor(props){

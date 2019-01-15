@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios';
-import urls from './backendurls'
+import urls from '../backendurls'
 import {Badge,Button,Input} from 'reactstrap'
 class AssignmentsQues extends React.Component{
     constructor(props){

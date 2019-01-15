@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import AssignmentCard from './AssignmentCard'
-import urls from './backendurls'
+import urls from '../backendurls'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, FormGroup } from 'reactstrap';
 import jwt from 'jsonwebtoken'
 
