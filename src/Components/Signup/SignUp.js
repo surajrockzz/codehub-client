@@ -66,9 +66,10 @@ class SignUp extends Component{
     render(){
         return(
             <div className="main">
-                <div className="responsivePair">
                     <div className="imgContainer">
-                      <img src="https://via.placeholder.com/728x728.png"  alt="marketingImage"/>
+                    <h3 id="texth">A new care taker.</h3>
+                      <img src="http://localhost:3000/images/student-849826_1920.jpg" width="100%" id="imgSign"  alt="marketingImage"/>
+                      
                     </div>
                     <div className="fieldContainer">
                          <h3>SignUp</h3>
@@ -96,7 +97,7 @@ class SignUp extends Component{
                         <Button color="primary" id="signUpbtn"  onClick={this.submitDetails}>Start Coding Now</Button>
                     </div>
                 </div>
-                </div>
+               
         )
     }
 }

@@ -12,7 +12,7 @@
 
 .contentDiv{
     margin:0.5em;
-    padding-right:1%;
+    padding:1%;
     display: flex;
     transition: box-shadow .3s;
     border-radius:10px;
@@ -24,15 +24,65 @@
 
 .buttonsDiv{
     display:flex;
-        margin-top: 10%;
+       margin-top: 29%;
+       margin-bottom: 12%;
 }
 
 .buttonsDiv button {
     margin:2%;
-    padding-top:2%;
-    padding-bottom: 2%;
-    background-color: aquamarine;
+    background-color: #216fe4;
     border-style: none;
+    color: white;
+    font-family: 'Libre Franklin', sans-serif;
+    border-radius: 6px;
+    padding: 6%;
 }
 
+#inputc{
+    margin-top:2%;
+    margin-bottom: 2%;
+    margin-left:34%;
+        font-size: 1.6em;
+
+}
+
+#searchBtn{
+    padding: 0.3%;
+    background-color: #6400e4;
+    border-radius: 50px;
+        border-color: transparent;
+            user-select: none;
+            color: white;
+}
+
+#name{
+font-family: 'Staatliches',
+cursive;
+}
+#username{
+font-family: 'Staatliches',
+cursive;
+}
+
+.info{
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 6%;
+        margin-bottom: -7%;
+}
+.imagesdiv{
+       margin-left: 6%;
+       margin-top: 4%;
+}
+
+.imgdim{
+    width:100%;
+}
+p{
+    margin-right:2%;
+}
+
+h3{
+    padding-bottom: 1%;
+}
 

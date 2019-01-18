@@ -1,34 +1,38 @@
 .main{
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
-.responsivePair{
-    display: flex;
-    width: 100%;
-    flex-direction: row;
+.imgContainer{
+    overflow: hidden;
+    position: relative;
+
+}
+#imgSign{
+    height:100%;
+}
+
+#texth{
+    position: absolute;
+        top: 87%;
+        left: 19%;
+    font-family: 'Righteous', cursive;
+    color: white;
 }
 
 .fieldContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    padding-left: 9%;
-}
-.imgContainer{
-    width:50%;
+    
+    padding-top: 8%;
+    padding-left:8%;
+    padding-right:8%;
+    padding-bottom:2%;
 
 }
-.imageC{
- width:100%;
- height:auto;   
+.btn{
+        margin-left: 29%;
+        margin-top: 3%;
+        padding-left: 4%;
+        padding-right: 4%;
+        font-size: 1.2em;
 }
 
-#signUpbtn{
-    padding:5px;
-}

@@ -51,8 +51,8 @@ class Card extends React.Component{
    return(
         <div className="contentDiv"> 
             <div className="info">
-                <p>{this.props.data.name}</p>
-                <p>{this.props.data.username}</p>
+                <h3 id="name">{this.props.data.name}</h3>
+                <h3 id="username">{this.props.data.username}</h3>
                 <div className="buttonsDiv">
                     {this.state.admin&&<button type="button" id="admin">Admin</button>}
                     {this.state.staff&&<button type="button" id="staff">Staff</button>}
@@ -64,7 +64,7 @@ class Card extends React.Component{
                 </div>
             </div>
             <div className="imagesdiv">
-                <img src="https://picsum.photos/100?random" alt="sample" className="imgdim"/>
+                <img src="https://via.placeholder.com/150" alt="sample" className="imgdim"/>
             </div>
         </div>
    )

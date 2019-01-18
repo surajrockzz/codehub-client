@@ -5,6 +5,7 @@ import Card from './Card.js'
 import axios from 'axios'
 import jwt from 'jsonwebtoken'
 
+
 class Users extends React.Component{
     constructor(props){
         super(props)
@@ -17,7 +18,7 @@ class Users extends React.Component{
         
     }
     renderContent(){
-     return this.state.list.map(usr => <Card data={usr} username={this.state.username} token={this.props.token}/>)
+     return this.state.list.map(usr => <Card data={usr} key={usr.username} username={this.state.username} token={this.props.token}/>)
     }
 
     componentDidMount(){
@@ -35,8 +36,10 @@ class Users extends React.Component{
         return(
         <div className="usersdiv">
             <div className="inputContainer">
-                <input type="text"/>
-                <button type="button">search</button>
+                <input type="text" id="inputc"/>
+                <button type="button" id="searchBtn">
+                        Search
+                </button>
             </div>
             <div className="infContainer">
               {this.state.list!==''&&this.renderContent()}
