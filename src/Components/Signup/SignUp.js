@@ -93,7 +93,6 @@ class SignUp extends Component{
                             <Label for="Password">Password</Label>
                             <Input type="password" name="password" id="Password" placeholder="Enter password" onChange={this.setValues} value={this.state.password} />
                         </FormGroup>
-
                         <Button color="primary" id="signUpbtn"  onClick={this.submitDetails}>Start Coding Now</Button>
                     </div>
                 </div>

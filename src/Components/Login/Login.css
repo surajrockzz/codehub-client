@@ -1,23 +1,29 @@
 .main-div{
-    margin-top:3%;
-    padding: 10% 3% 9% 0%;
-    border: 2px solid black;
+            padding-top: 15%;
+            padding-left: 11%;
+            padding-right: 11%;
+            background: white;
+            height: 424px;
+            width: 497px;
+            border-radius: 4%;
+                margin-left: 12%;
+}
+.btn {
+    margin-left: 33%;
+}
+.full{
+    background:url("http://localhost:3000/images/82.jpg");
+     padding-left:30%;
+     padding-right:30%;
+     padding-top:10%;
+     padding-bottom:10%;
+}
+#logotext{
+    padding-left:17%;
 }
 
-
-label{
-    padding: 2% 0 0 0;
-    font-size: 1em;
-}
-input{
-    font-size: 2em;
-}
-
-.btn{
-    margin-left: 41%;
-    margin-top: 3%;
-    padding-left: 4%;
-    padding-right: 4%;
-    font-size: 1.2em;
+#imgid{
+    margin-top: -20%;
+    padding-left: 24%;
 }
 

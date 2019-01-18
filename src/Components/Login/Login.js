@@ -40,11 +40,13 @@ class Login extends Component{
     }
     render(){
         return(
-            <Container className="full">
-                <Row className="main-div">
-                    
-                    <Col sm="12" md={{ size: 6, offset: 3 }}>
-                        <h3>Login</h3>
+            <div className="full">
+                <div className="main-div"> 
+                        <div id="logotext"> 
+                        < img src = "https://via.placeholder.com/75" id="imgid"/>
+                        <h3 >CodeHub Login</h3>
+                        </div>
+                        
                         <FormGroup>
                             <Label for="Email">Email</Label>
                             <Input type="email" name="email" id="Email" placeholder="Enter email" onChange={this.setUsername} value={this.state.username}/>
@@ -55,9 +57,9 @@ class Login extends Component{
                         </FormGroup>
 
                         <Button color="primary" onClick={this.submitLogin}>Submit</Button>
-                    </Col>
-                </Row>
-            </Container>
+                    
+                </div>
+            </div>
         )
     }
 }
