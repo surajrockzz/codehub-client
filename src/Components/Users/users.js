@@ -18,7 +18,7 @@ class Users extends React.Component{
         
     }
     renderContent(){
-     return this.state.list.map(usr => <Card data={usr} key={usr.username} username={this.state.username} token={this.props.token}/>)
+     return this.state.list.map(usr => <Card data={usr} key={usr.username} username={this.state.username}   token={this.props.token}/>)
     }
 
     componentDidMount(){
@@ -38,7 +38,7 @@ class Users extends React.Component{
             <div className="inputContainer">
                 <input type="text" id="inputc"/>
                 <button type="button" id="searchBtn">
-                        Search
+                       <i className="fas fa-search"></i>
                 </button>
             </div>
             <div className="infContainer">

@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import {Badge} from 'reactstrap'
 
 class Card extends React.Component{
     constructor(props){
@@ -50,22 +51,23 @@ class Card extends React.Component{
     render(){
    return(
         <div className="contentDiv"> 
+             <div className="imagesdiv">
+                <img src="https://via.placeholder.com/150" alt="sample" className="imgdim"/>
+            </div>
             <div className="info">
-                <h3 id="name">{this.props.data.name}</h3>
-                <h3 id="username">{this.props.data.username}</h3>
+                <h3 id="cname">{this.props.data.name}</h3>
+                <h3 id="cusername">{this.props.data.username}</h3>
                 <div className="buttonsDiv">
-                    {this.state.admin&&<button type="button" id="admin">Admin</button>}
-                    {this.state.staff&&<button type="button" id="staff">Staff</button>}
+                    {this.state.admin&&<Badge id="admin" color="success"><i className="fas fa-user-edit"></i>Admin</Badge>}
+                    {this.state.staff&&<Badge id="staff" color="success"><i className="fas fa-user"></i>Staff</Badge>}
                     {((!this.state.admin&&!this.state.staff)
                     &&this.state.visible)&&
-                    (<><button type="button" id="makeAdmin" onClick={this.handleChange}>Make as Admin</button>
-                    <button type="button" id="makeStaff" onClick={this.handleChange}>Make as Staff</button></>)
+                    (<><button type="button" id="makeAdmin" onClick={this.handleChange}><i className="fas fa-user-edit"></i>Make as Admin</button>
+                    <button type="button" id="makeStaff" onClick={this.handleChange}><i className="fas fa-user"></i>Make as Staff</button></>)
                     }
                 </div>
             </div>
-            <div className="imagesdiv">
-                <img src="https://via.placeholder.com/150" alt="sample" className="imgdim"/>
-            </div>
+           
         </div>
    )
     }

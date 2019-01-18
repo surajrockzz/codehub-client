@@ -13,7 +13,7 @@
 .contentDiv{
     margin:0.5em;
     padding:1%;
-    display: flex;
+    display: grid;
     transition: box-shadow .3s;
     border-radius:10px;
     border: 1px solid #ccc;
@@ -22,67 +22,59 @@
     box-shadow: 0 0 11px rgba(33, 33, 33, .2);
 }
 
-.buttonsDiv{
-    display:flex;
-       margin-top: 29%;
-       margin-bottom: 12%;
+#searchBtn {
+   color: white;
+   background-color: #544f7b;
+   border: #544f7b;
+   border-radius: 10%;
+   padding: 0.3% 1.5% 0.3% 1.5%;
+   margin-left: 1%;
+
 }
 
-.buttonsDiv button {
-    margin:2%;
-    background-color: #216fe4;
-    border-style: none;
+.inputContainer{
+    margin-top:1%;
+    padding-left: 43%;
+    margin-bottom: 1%;
+}
+
+#cname{
+    margin-top:5%;
+        font-size: 1.20rem;
+}
+#cusername{
+        font-size: 1.10rem;
+        font-weight: 100;
+}
+
+#staff{
+    margin-left:2%;
+}
+
+i{
+    margin-left:1%;
+}
+
+#makeAdmin{
+    border:none;
+    
     color: white;
-    font-family: 'Libre Franklin', sans-serif;
-    border-radius: 6px;
-    padding: 6%;
+    background-color: #866EFF;
+    padding:1%;
+    margin-top:1%;
+    margin-bottom:1%;
+        font-size: 0.8em;
+        display: block;
+        width:100%;
 }
-
-#inputc{
-    margin-top:2%;
-    margin-bottom: 2%;
-    margin-left:34%;
-        font-size: 1.6em;
-
+#makeStaff{
+    border:none;
+    color: white;
+    background-color: #866EFF;
+    padding:1%;
+    margin-top:1%;
+    margin-bottom:1%;
+        font-size: 0.8em;
+        display: block;
+        width:100%;
 }
-
-#searchBtn{
-    padding: 0.3%;
-    background-color: #6400e4;
-    border-radius: 50px;
-        border-color: transparent;
-            user-select: none;
-            color: white;
-}
-
-#name{
-font-family: 'Staatliches',
-cursive;
-}
-#username{
-font-family: 'Staatliches',
-cursive;
-}
-
-.info{
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 6%;
-        margin-bottom: -7%;
-}
-.imagesdiv{
-       margin-left: 6%;
-       margin-top: 4%;
-}
-
-.imgdim{
-    width:100%;
-}
-p{
-    margin-right:2%;
-}
-
-h3{
-    padding-bottom: 1%;
-}
-
