@@ -1,10 +1,24 @@
 import React from 'react'
 import axios from 'axios';
 import urls from '../backendurls'
-import {Badge,Button,Input} from 'reactstrap'
+import {Badge,Input} from 'reactstrap'
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const styles = theme => ({
+    button: {
+      margin: theme.spacing.unit,
+    },
+    input: {
+      display: 'none',
+    },
+  });
+
+
 class AssignmentsQues extends React.Component{
     constructor(props){
         super(props)
+       
         this.state = {
             id:'',
             quesList:'',
@@ -17,8 +31,8 @@ class AssignmentsQues extends React.Component{
         this.updateValue = this.updateValue.bind(this)
     }
     renderQues(){
-
-        return this.state.quesList.map(question => (<div key={question.id}><h3>{this.extractTitle.bind(this,question.url)()}</h3> <Button color="primary" onClick={this.changeWindow.bind(this,{id:question.id,url:question.url})} size="sm" >Try</Button></div>))
+        const {classes} = this.props
+        return this.state.quesList.map(question => (<div key={question.id}><h3>{this.extractTitle.bind(this,question.url)()}<Button variant="contained" color="primary" className={classes.button} onClick={this.changeWindow.bind(this,{id:question.id,url:question.url})} size="sm" >Try</Button></h3> </div>))
     }
     extractTitle(data){
         var str = ''
@@ -84,6 +98,7 @@ class AssignmentsQues extends React.Component{
 
     }
     render(){
+        const { classes } = this.props
         return (<div> 
             <div className="titlediv">
                 <h2>{this.state.title}</h2>
@@ -95,13 +110,11 @@ class AssignmentsQues extends React.Component{
 
                 {(this.state.staff||this.state.admin)&&(
                     <>
-                <Input placeholder="username" value={this.state.newques} onChange={this.updateValue}/>
-                <Button color="primary" onClick={this.addQues}>add div</Button>
+                <Input placeholder="paste url" value={this.state.newques} onChange={this.updateValue}/>
+                <Button variant="contained" color="primary" onClick={this.addQues} className={classes.button}>New Question</Button>
                 </>)}
-                
-
         </div>)
     }
 }
 
-export default AssignmentsQues
+export default withStyles(styles)(AssignmentsQues);

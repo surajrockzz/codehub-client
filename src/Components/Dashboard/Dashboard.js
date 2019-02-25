@@ -1,14 +1,23 @@
 import React from 'react';
-
+import Table from './TablePaginationActions/TablePaginationActions'
 class Dashboard extends React.Component{
     render(){
         if(this.props.token!=null){
             return(
-                <div>DashbOard  {this.props.token}</div>
+                <div>
+                    <h1>tablename</h1>
+                    <Table/>
+                </div>
             )
         }
         else{
-            window.location = '/login'
+            return(
+                <div>
+                    <h1>tablename</h1>
+                    <Table/>
+                </div>
+            )
+            
         }
     }
 }
