@@ -16,8 +16,8 @@ class Card extends React.Component{
     handleChange(e){
         if (e.target.id === "makeAdmin") {
             axios.put("http://localhost:8000/admin/users/" + this.props.data.username, {
-                is_admin: true,
-                is_staff: false
+                is_staff:this.state.staff,
+                is_admin: true
             }, {
                 headers: {
                     "Authorization": "JWT " + this.props.token
@@ -34,7 +34,7 @@ class Card extends React.Component{
             })
         } else if (e.target.id === "makeStaff") {
             axios.put("http://localhost:8000/admin/users/" + this.props.data.username, {
-                is_admin: false,
+                is_admin: this.state.admin,
                 is_staff: true
             },{headers:{"Authorization":"JWT "+this.props.token}}).then((response) => {
                 if(response.status === 202){
