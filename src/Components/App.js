@@ -13,6 +13,7 @@ import AssignmentsList from './assignmentsList/assignmentsList.js'
 import AssignmentsQues from './AssignmentsQues/AssignmentsQues.js'
 import Colleges from './Colleges/Colleges.js'
 import CollegeName from './Colleges/CollegeName.js'
+import UsersEdit from './Dashboard/UsersEdit/UsersEdit'
 import './App.css';
 
 
@@ -28,7 +29,8 @@ class App extends Component {
             <Route path="/signup" component={SignUp}/>
             <Route path="/test"   render={(props) => <Test {...props}  token={window.localStorage.getItem("JWT")}/>}/>
             <Route path="/logout" component={Logout}/>
-            <Route path="/users" render={(props) => <Users {...props}  token={window.localStorage.getItem("JWT")}/>}/>
+            <Route exact path="/users" render={(props) => <Users {...props}  token={window.localStorage.getItem("JWT")}/>}/>
+            <Route path="/users/:username" render={(props) => <UsersEdit {...props}  token={window.localStorage.getItem("JWT")}/>}/>
             <Route exact path="/assignments" render={(props) => <AssignmentsList {...props}  token={window.localStorage.getItem("JWT")}/>}/>
             <Route path="/assignments/:id" render={(props) => <AssignmentsQues {...props}  token={window.localStorage.getItem("JWT")}/>}/>
             <Route exact path="/colleges" component={Colleges}/>

@@ -10,9 +10,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { emphasize } from '@material-ui/core/styles/colorManipulator';
 import Grid from '@material-ui/core/Grid';
+import Axios from 'axios';
 
 
-const suggestions = [
+var suggestions = [
     { label: 'Afghanistan' },
     { label: 'Aland Islands' },
     { label: 'Albania' },
@@ -213,13 +214,47 @@ class UsersEdit extends Component{
         this.state = {
             single: null,
             multi: null,
-          };
+            name:'',
+            username:'',
+            email:'',
+            suggestions:[]
+          }
+          this.handleText= this.handleText.bind(this);
     }
     handleChange = name => value => {
         this.setState({
           [name]: value,
         });
-      };
+      }
+    handleText(event){
+      this.setState({
+        [event.target.name]:event.target.value
+      })
+    }
+    handleOpen(e){
+      console.log(e.target)
+    }
+
+      componentDidMount(){
+          Axios.get(`http://localhost:8000/users/${this.props.match.params.username}`,{
+            headers: {
+              "Authorization": "JWT " + this.props.token
+          } 
+          }).then((response) =>{
+            console.log(response)
+            this.setState({
+              name:response.data.name,
+              username:response.data.username,
+              email:response.data.email
+            })
+          }) 
+          .catch( err => console.log(err))
+
+
+      }
+
+
+
     render(){
         const { classes } = this.props;
         const selectStyles = {
@@ -238,43 +273,35 @@ class UsersEdit extends Component{
                 <TextField
                     id="outlined-helperText"
                     label="username"
-                    defaultValue="Default Value"
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
-                    value="suraj"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.handleText}
                 />
                 </Grid>
                 <Grid item xs={12}>
                 <TextField
                     id="outlined-helperText"
                     label="name"
-                    defaultValue="Default Value"
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
-                />
-                </Grid>
-                <Grid item xs={12}>
-                <TextField
-                    id="date"
-                    label="Birthday"
-                    type="date"
-                    defaultValue="2017-05-24"
-                    className={classes.textField}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
+                    name="name"
+                    value={this.state.name}
+                    onChange={this.handleText}
                 />
                 </Grid>
                 <Grid item xs={12}>
                 <TextField
                     id="outlined-helperText"
                     label="email"
-                    defaultValue="example@email.com"
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
+                    value={this.state.email}
+                    onChange={this.handleText}
                 />
                 </Grid>
                 
@@ -292,6 +319,7 @@ class UsersEdit extends Component{
                     components={components}
                     value={this.state.multi}
                     onChange={this.handleChange('multi')}
+                    onOpen={this.handleOpen}
                     placeholder="Select multiple countries"
                     isMulti
                 />

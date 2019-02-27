@@ -12,16 +12,18 @@ class Users extends React.Component{
         var decoded = jwt.decode(this.props.token)
         this.state={
             list:"",
-            username:decoded.username
+            username:decoded.username,
+            details:decoded
         }
         this.renderContent = this.renderContent.bind(this)
         
     }
     renderContent(){
-     return this.state.list.map(usr => <Card data={usr} key={usr.username} username={this.state.username}   token={this.props.token}/>)
+     return this.state.list.map(usr => <Card data={usr} key={usr.username} username={this.state.username} ownerDetails={this.state.details}   token={this.props.token}/>)
     }
 
     componentDidMount(){
+        
         axios.get(urls.apiusers,{
                 headers:{"Authorization":"JWT "+this.props.token}
         }).then((response)=>{
