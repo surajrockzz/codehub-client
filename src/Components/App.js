@@ -11,6 +11,8 @@ import Logout from './Logout/Logout.js'
 import Users from './Users/users.js'
 import AssignmentsList from './assignmentsList/assignmentsList.js'
 import AssignmentsQues from './AssignmentsQues/AssignmentsQues.js'
+import Colleges from './Colleges/Colleges.js'
+import CollegeName from './Colleges/CollegeName.js'
 import './App.css';
 
 
@@ -29,6 +31,8 @@ class App extends Component {
             <Route path="/users" render={(props) => <Users {...props}  token={window.localStorage.getItem("JWT")}/>}/>
             <Route exact path="/assignments" render={(props) => <AssignmentsList {...props}  token={window.localStorage.getItem("JWT")}/>}/>
             <Route path="/assignments/:id" render={(props) => <AssignmentsQues {...props}  token={window.localStorage.getItem("JWT")}/>}/>
+            <Route exact path="/colleges" component={Colleges}/>
+            <Route exact path="/colleges/:id" component={CollegeName}/>
         </div>
       </BrowserRouter>
     );
