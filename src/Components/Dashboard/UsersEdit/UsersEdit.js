@@ -6,52 +6,13 @@ import Select from 'react-select';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Chip from '@material-ui/core/Chip';
+import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { emphasize } from '@material-ui/core/styles/colorManipulator';
 import Grid from '@material-ui/core/Grid';
 import Axios from 'axios';
 
-
-var suggestions = [
-    { label: 'Afghanistan' },
-    { label: 'Aland Islands' },
-    { label: 'Albania' },
-    { label: 'Algeria' },
-    { label: 'American Samoa' },
-    { label: 'Andorra' },
-    { label: 'Angola' },
-    { label: 'Anguilla' },
-    { label: 'Antarctica' },
-    { label: 'Antigua and Barbuda' },
-    { label: 'Argentina' },
-    { label: 'Armenia' },
-    { label: 'Aruba' },
-    { label: 'Australia' },
-    { label: 'Austria' },
-    { label: 'Azerbaijan' },
-    { label: 'Bahamas' },
-    { label: 'Bahrain' },
-    { label: 'Bangladesh' },
-    { label: 'Barbados' },
-    { label: 'Belarus' },
-    { label: 'Belgium' },
-    { label: 'Belize' },
-    { label: 'Benin' },
-    { label: 'Bermuda' },
-    { label: 'Bhutan' },
-    { label: 'Bolivia, Plurinational State of' },
-    { label: 'Bonaire, Sint Eustatius and Saba' },
-    { label: 'Bosnia and Herzegovina' },
-    { label: 'Botswana' },
-    { label: 'Bouvet Island' },
-    { label: 'Brazil' },
-    { label: 'British Indian Ocean Territory' },
-    { label: 'Brunei Darussalam' },
-  ].map(suggestion => ({
-    value: suggestion.label,
-    label: suggestion.label,
-  }));
   
   const styles = theme => ({
     root: {
@@ -217,11 +178,16 @@ class UsersEdit extends Component{
             name:'',
             username:'',
             email:'',
+            hackerrank_id:'',
             suggestions:[]
           }
           this.handleText= this.handleText.bind(this);
+          this.handleClick= this.handleClick.bind(this);
     }
     handleChange = name => value => {
+      if(name ==="multi"){
+        console.log(value)
+      }
         this.setState({
           [name]: value,
         });
@@ -249,10 +215,44 @@ class UsersEdit extends Component{
             })
           }) 
           .catch( err => console.log(err))
-
+          Axios.get("http://localhost:8000/codingcenter/colleges")
+          .then((response)=>{
+            console.log(response)
+            let objects = response.data
+            let jetex = objects.map(obj =>({
+              value:obj.hackerrank_college_id,
+              label:obj.name,
+              id:obj.id
+            }))
+            this.setState({
+              suggestions:jetex
+            })
+          })
 
       }
-
+      handleClick(){
+        let arr =[]
+        let colleges = this.state.multi.map(obj =>{
+          arr.push(obj.id)
+        } );
+        console.log(arr)
+        console.log({
+          email: this.state.email,
+          name:this.state.name,
+          username:this.state.username,
+          hackerrank_id:this.state.hackerrank_id,
+          colleges:arr})
+        Axios.put(`http://localhost:8000/users/${this.props.match.params.username}`,
+        {
+                email: this.state.email,
+                name:this.state.name,
+                username:this.state.username,
+                hackerrank_id:this.state.hackerrank_id,
+                colleges:arr
+        },
+        {headers:{"Authorization":"JWT "+this.props.token}}
+        ).then(response => console.log(response))
+      }
 
 
     render(){
@@ -298,13 +298,26 @@ class UsersEdit extends Component{
                     id="outlined-helperText"
                     label="email"
                     className={classes.textField}
+                    name="email"
                     margin="normal"
                     variant="outlined"
                     value={this.state.email}
                     onChange={this.handleText}
                 />
                 </Grid>
-                
+                <Grid item xs={12}>
+                <TextField
+                    id="outlined-helperText"
+                    label="hackerrank id"
+                    className={classes.textField}
+                    name = "hackerrank_id"
+                    margin="normal"
+                    variant="outlined"
+                    value={this.state.hackerrank_id}
+                    onChange={this.handleText}
+                />
+                </Grid>
+
                 <Grid item xs={6}>
                 <Select
                     classes={classes}
@@ -315,16 +328,19 @@ class UsersEdit extends Component{
                         shrink: true,
                     },
                     }}
-                    options={suggestions}
+                    options={this.state.suggestions}
                     components={components}
                     value={this.state.multi}
                     onChange={this.handleChange('multi')}
                     onOpen={this.handleOpen}
-                    placeholder="Select multiple countries"
+                    placeholder="Select colleges"
                     isMulti
                 />
-
-
+                </Grid>
+                <Grid item xs={12}>
+                <Button variant="outlined" size="medium" color="primary" className={classes.margin} onClick={this.handleClick}>
+                  Submit
+                </Button>
                 </Grid>
                 
             </Grid>
