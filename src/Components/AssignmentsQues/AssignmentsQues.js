@@ -99,7 +99,8 @@ class AssignmentsQues extends React.Component{
     }
     render(){
         const { classes } = this.props
-        return (<div> 
+        return (
+        <div class = "container"> 
             <div className="titlediv">
                 <h2>{this.state.title}</h2>
                 <h5>Created by <Badge color="secondary">{this.state.creator}</Badge></h5>
@@ -107,7 +108,6 @@ class AssignmentsQues extends React.Component{
             <div className="questions">
                 {this.state.quesList!==''&&this.renderQues()}
             </div>
-
                 {(this.state.staff||this.state.admin)&&(
                     <>
                 <Input placeholder="paste url" value={this.state.newques} onChange={this.updateValue}/>

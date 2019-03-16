@@ -1,7 +1,28 @@
 import React,{Component} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter,Input } from 'reactstrap';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import CollegeName from './CollegeName'
+
+
+const styles = theme => ({
+    
+    button: {
+      margin: theme.spacing.unit,
+    },
+    input: {
+      display: 'none',
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 200,
+      },
+  });
+
+
 
 class Colleges extends Component{
 
@@ -20,6 +41,7 @@ class Colleges extends Component{
     componentDidMount(){
         axios.get("http://localhost:8000/codingcenter/colleges")
         .then((response)=>{
+            console.log(response.data)
             this.setState({
                 collegesList:response.data
             })
@@ -48,25 +70,25 @@ class Colleges extends Component{
         })
     }
     render(){
+        const { classes } = this.props;
         return(
-            <div>
-                <Button color="danger" onClick={this.toggle}>Add College</Button>
+            <div className="container">
+                <Button variant="contained" color="secondary" className={classes.button} onClick={this.toggle}>Add college</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                <ModalHeader toggle={this.toggle}>Add new  College</ModalHeader>
                 <ModalBody>
-                    <input type="text" placeholder="enter hackerrank id" name="hkid" value={this.state.hkid} onChange={this.handleChange}/>
-                    <input type="text" placeholder="name" name="name" value={this.state.name} onChange={this.handleChange}/>
+                <Input type="text" name="assignmentName" id="assignmentName" placeholder="enter hackerrank id" value={this.state.hkid} onChange={this.handleChange}/>
+                <Input type="text" name="assignmentName" id="assignmentName" placeholder="college name" value={this.state.name} onChange={this.handleChange}/>
                 </ModalBody>
                 <ModalFooter>
-                <Button color="primary" onClick={this.toggle}>Submit</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                <Button variant="contained" color="primary" className={classes.button} onClick={this.toggle}>Submit</Button>{' '}
+            <Button variant="contained" color="secondary" className={classes.button} onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
-                {this.state.collegesList!=''&&this.state.collegesList.map( (college) => <h3> <Link to ={`/colleges/${college.id}`}>{college.name}</Link></h3> )}
+                {this.state.collegesList!=''&&this.state.collegesList.map( (college) => <CollegeName id={college.id} name={college.name}/> )}
                 </div>
         )
     }
 }
 
-
-export default Colleges
+export default withStyles(styles)(Colleges);

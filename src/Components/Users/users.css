@@ -11,7 +11,8 @@
 }
 
 .contentDiv{
-    margin:0.5em;
+    margin-bottom:0.5em;
+    margin-top:0.5em;
     padding:1%;
     display: grid;
     transition: box-shadow .3s;
@@ -21,6 +22,19 @@
 .contentDiv:hover {
     box-shadow: 0 0 11px rgba(33, 33, 33, .2);
 }
+
+.contDiv{
+    margin:0.5em;
+    padding:1%;
+    display: grid;
+    transition: box-shadow .3s;
+    border-radius:10px;
+    border: 1px solid #ccc;
+}
+.contDiv:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+}
+
 
 #searchBtn {
    color: white;

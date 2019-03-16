@@ -2,8 +2,22 @@ import React from 'react'
 import axios from 'axios'
 import AssignmentCard from './AssignmentCard'
 import urls from '../backendurls'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, FormGroup } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, FormGroup } from 'reactstrap';
 import jwt from 'jsonwebtoken'
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+
+
+const styles = theme => ({
+    button: {
+      margin: theme.spacing.unit,
+    },
+    input: {
+      display: 'none',
+    },
+  });
+
 
 class AssignmentsList extends React.Component{
     constructor(props){
@@ -49,13 +63,14 @@ class AssignmentsList extends React.Component{
             })
         }
         render(){
+            const { classes } = this.props;
             const token = jwt.decode(this.props.token)
             const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
             return(<div>
-                <div className="assignmentSearch">
+                <div className="container">
                    <input type="text"/>
                     <Button type="button">search</Button>
-                   {(token.is_admin||token.is_staff)&&<Button color="danger" onClick={this.toggle}>add</Button> }
+                   {(token.is_admin||token.is_staff)&&<Button variant="contained" color="secondary" className={classes.button} onClick={this.toggle}>add</Button> }
                 </div>
                 <div className="assignmentList">
                 {this.state.showQues && this.renderLists()}
@@ -68,10 +83,10 @@ class AssignmentsList extends React.Component{
                             <Label for="assignmentName">Name</Label>
                             <Input type="text" name="assignmentName" id="assignmentName" placeholder="new assignment" value={this.state.assignmentName} onChange={this.handleInput}/>
                         </FormGroup>
-          </ModalBody>
+                    </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.createAssignment}>Create</Button>
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        <Button variant="contained" color="primary" className={classes.button} onClick={this.createAssignment}>Create</Button>
+                        <Button variant="contained" color="secondary" className={classes.button} onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
 
@@ -95,4 +110,4 @@ class AssignmentsList extends React.Component{
         }
 }
 
-export default AssignmentsList
+export default withStyles(styles)(AssignmentsList);

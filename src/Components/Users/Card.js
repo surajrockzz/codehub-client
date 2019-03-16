@@ -2,6 +2,19 @@ import React from 'react'
 import axios from 'axios'
 import {Badge} from 'reactstrap'
 import {Link} from 'react-router-dom'
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+
+const styles = theme => ({
+    button: {
+      margin: theme.spacing.unit,
+    },
+    input: {
+      display: 'none',
+    },
+  });
+
 
 class Card extends React.Component{
     constructor(props){
@@ -52,7 +65,7 @@ class Card extends React.Component{
     }
     render(){
    return(
-        <div className="contentDiv"> 
+        <div className="contDiv"> 
              <div className="imagesdiv">
                 <img src="https://via.placeholder.com/150" alt="sample" className="imgdim"/>
             </div>
@@ -75,4 +88,4 @@ class Card extends React.Component{
 
 }
 
-export default Card
+export default withStyles(styles)(Card);
