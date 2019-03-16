@@ -266,7 +266,7 @@ class UsersEdit extends Component{
       }),
     };
         return(
-            <div>
+            <div class = "container">
                 <h3>users edit</h3>
                 <Grid container spacing={24}>
                 <Grid item xs={12}>
