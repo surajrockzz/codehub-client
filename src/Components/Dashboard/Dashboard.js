@@ -6,7 +6,7 @@ class Dashboard extends React.Component{
         if(this.props.token!=null){
             return(
                 <div>
-                    <h1>tablename</h1>
+                    <h1>Assignments</h1>
                     <Table/>
                 </div>
             )
@@ -14,7 +14,7 @@ class Dashboard extends React.Component{
         else{
             return(
                 <div>
-                    <h1>tablename</h1>
+                    <h1>Assignments</h1>
                     <Table/>
                     
                 </div>

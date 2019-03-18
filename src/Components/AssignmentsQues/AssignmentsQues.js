@@ -4,7 +4,7 @@ import urls from '../backendurls'
 import {Badge,Input} from 'reactstrap'
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-
+import Loading from '../Loading/Loading'
 const styles = theme => ({
     button: {
       margin: theme.spacing.unit,
@@ -32,7 +32,7 @@ class AssignmentsQues extends React.Component{
     }
     renderQues(){
         const {classes} = this.props
-        return this.state.quesList.map(question => (<div key={question.id}><h3>{this.extractTitle.bind(this,question.url)()}<Button variant="contained" color="primary" className={classes.button} onClick={this.changeWindow.bind(this,{id:question.id,url:question.url})} size="sm" >Try</Button></h3> </div>))
+        return this.state.quesList.map(question => (<div key={question.id} className="contentDiv"><h3>{this.extractTitle.bind(this,question.url)()}<Button variant="contained" color="primary" className={classes.button} onClick={this.changeWindow.bind(this,{id:question.id,url:question.url})} size="sm" >Try</Button></h3> </div>))
     }
     extractTitle(data){
         var str = ''
@@ -49,6 +49,7 @@ class AssignmentsQues extends React.Component{
             },{
                 headers:{"Authorization": "JWT " + this.props.token}
             }).then((response)=>{
+                    console.log(response.data)
                     this.setState({
                         quesList: [...this.state.quesList, response.data],
                         newques:''
@@ -102,10 +103,17 @@ class AssignmentsQues extends React.Component{
         return (
         <div class = "container"> 
             <div className="titlediv">
-                <h2>{this.state.title}</h2>
-                <h5>Created by <Badge color="secondary">{this.state.creator}</Badge></h5>
+                <div className="HeadingDiv">
+                    <h2>{this.state.title}</h2>
+                    <h5>Created by <Badge color="secondary">{this.state.creator}</Badge></h5>
+                </div>
+                <div className="DashboardDiv">
+                    <Button variant="contained" color="primary" onClick={this.addQues} className={classes.button}>Dashboard</Button>
+                </div>
             </div>
+        
             <div className="questions">
+                {this.state.quesList==''&&<Loading type="bars" color="#000000"/>}
                 {this.state.quesList!==''&&this.renderQues()}
             </div>
                 {(this.state.staff||this.state.admin)&&(

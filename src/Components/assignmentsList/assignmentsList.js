@@ -6,7 +6,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, FormGroup } f
 import jwt from 'jsonwebtoken'
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-
+import Loading from '../Loading/Loading'
 
 
 const styles = theme => ({
@@ -73,6 +73,7 @@ class AssignmentsList extends React.Component{
                    {(token.is_admin||token.is_staff)&&<Button variant="contained" color="secondary" className={classes.button} onClick={this.toggle}>add</Button> }
                 </div>
                 <div className="assignmentList">
+                {!this.state.showQues&&<Loading type="bars" color="#000000"/>}
                 {this.state.showQues && this.renderLists()}
                 </div>
 

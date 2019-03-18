@@ -4,7 +4,7 @@ import urls from '../backendurls.js'
 import Card from './Card.js'
 import axios from 'axios'
 import jwt from 'jsonwebtoken'
-
+import Loading from '../Loading/Loading'
 
 class Users extends React.Component{
     constructor(props){
@@ -44,6 +44,7 @@ class Users extends React.Component{
                 </button>
             </div>
             <div className="infContainer">
+              {this.state.list==''&&<Loading type="bars" color="#000000"/>}
               {this.state.list!==''&&this.renderContent()}
             </div>    
         </div>

@@ -12,3 +12,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.DashboardDiv{
+  float:right
+}
+
+.HeadingDiv{
+  float: left;
+}
+.titlediv{
+  display: flow-root;
+  width:100%;
+}

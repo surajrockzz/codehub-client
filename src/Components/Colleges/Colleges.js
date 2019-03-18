@@ -5,6 +5,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter,Input } from 'reactstrap';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import CollegeName from './CollegeName'
+import Loading from '../Loading/Loading';
 
 
 const styles = theme => ({
@@ -85,6 +86,7 @@ class Colleges extends Component{
             <Button variant="contained" color="secondary" className={classes.button} onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
+                {this.state.collegesList==''&&<Loading type="bars" color="#000000"/>}
                 {this.state.collegesList!=''&&this.state.collegesList.map( (college) => <CollegeName id={college.id} name={college.name}/> )}
                 </div>
         )
