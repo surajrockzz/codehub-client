@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React from 'react'
 
 
 const CollegeName = ({id,name}) => <div class = "container contentDiv" id ={id}>

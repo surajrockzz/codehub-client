@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Button, FormGroup, Label, Input} from 'reactstrap';
+import {  Button, FormGroup, Label, Input} from 'reactstrap';
 import axios from 'axios'
 import urls from '../backendurls.js'
 import './Login.css'

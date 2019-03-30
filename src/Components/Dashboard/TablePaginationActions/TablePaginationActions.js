@@ -9,11 +9,6 @@ import Paper from '@material-ui/core/Paper';
 import Axios from 'axios';
 import Loading from '../../Loading/Loading'
 
-let counter = 0;
-function createData(name, calories, fat) {
-  counter += 1;
-  return { id: counter, name, calories, fat };
-}
 
 const styles = theme => ({
   root: {
@@ -31,26 +26,42 @@ const styles = theme => ({
   
 
 class CustomPaginationActionsTable extends React.Component {
+
+  constructor(props){
+    super(props)
+    console.log(props)
+  }
   state = {
     rows: ''
   };
 
   componentDidMount(){
-    Axios.get("http://localhost:8000/codingcenter/dashboard?assignment_id=1")
-    .then((response)=>{
-      console.log(response)
-     this.setState({
-       rows: response.data
-     })
-    })
-    .catch((err)=> console.log(err))
+    if(this.props.allassignments){
+      Axios.get("http://localhost:8000/codingcenter/dashboard?assignment_id=1")
+      .then((response)=>{
+        console.log(response)
+        this.setState({
+          rows: response.data
+        })
+      })
+      .catch((err)=> console.log(err))
+    }else{
+
+      Axios.get(`http://localhost:8000/codingcenter/dashboard?assignment_id=${this.props.assign_id}`)
+      .then((response)=>{
+        console.log(response)
+        this.setState({
+          rows: response.data
+        })
+      })
+      .catch((err)=> console.log(err))
+    }
    }
 
 
   render() {
     const { classes } = this.props;
     const { rows} = this.state;
-
     return (
       <div className = "container">
       {rows===''&&<Loading type="bars" color="#000000"/>}
@@ -60,8 +71,8 @@ class CustomPaginationActionsTable extends React.Component {
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                <TableCell>Assignment</TableCell>
-                <TableCell align="center">Attempted</TableCell>
+                <TableCell>{this.props.hright}</TableCell>
+                <TableCell align="center">{this.props.hleft}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

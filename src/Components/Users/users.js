@@ -44,7 +44,7 @@ class Users extends React.Component{
                 </button>
             </div>
             <div className="infContainer">
-              {this.state.list==''&&<Loading type="bars" color="#000000"/>}
+              {this.state.list===''&&<Loading type="bars" color="#000000"/>}
               {this.state.list!==''&&this.renderContent()}
             </div>    
         </div>

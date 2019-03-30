@@ -5,6 +5,7 @@ import {Badge,Input} from 'reactstrap'
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Loading from '../Loading/Loading'
+import {Redirect} from 'react-router-dom'
 const styles = theme => ({
     button: {
       margin: theme.spacing.unit,
@@ -18,17 +19,18 @@ const styles = theme => ({
 class AssignmentsQues extends React.Component{
     constructor(props){
         super(props)
-       
         this.state = {
             id:'',
             quesList:'',
             title:'',
             creator:'',
-            newques:''
+            newques:'',
+            dashboardclick:false
         }
         this.renderQues = this.renderQues.bind(this)
         this.addQues = this.addQues.bind(this)
         this.updateValue = this.updateValue.bind(this)
+        this.handleDashboard = this.handleDashboard.bind(this)
     }
     renderQues(){
         const {classes} = this.props
@@ -42,6 +44,12 @@ class AssignmentsQues extends React.Component{
             str="hackerank "
         return str+data.substring(cIndex+11,lastIndex)
         
+    }
+    handleDashboard(){
+        console.log("clicked")
+       this.setState({
+        dashboardclick:true
+       })
     }
     addQues(){
             axios.post(urls.assignmentsList+"/"+this.state.id+"/questions",{
@@ -58,7 +66,6 @@ class AssignmentsQues extends React.Component{
             .catch((error)=>{
                 console.log(error)
             })
-            
     }
     updateValue(e){
         this.setState({
@@ -99,6 +106,9 @@ class AssignmentsQues extends React.Component{
 
     }
     render(){
+        if (this.state.dashboardclick === true) {
+            return <Redirect to={`/dashboard/${this.state.id}`} />
+          }
         const { classes } = this.props
         return (
         <div class = "container"> 
@@ -108,12 +118,12 @@ class AssignmentsQues extends React.Component{
                     <h5>Created by <Badge color="secondary">{this.state.creator}</Badge></h5>
                 </div>
                 <div className="DashboardDiv">
-                    <Button variant="contained" color="primary" onClick={this.addQues} className={classes.button}>Dashboard</Button>
+                    <Button variant="contained" color="primary" onClick={this.handleDashboard} className={classes.button}>Dashboard</Button>
                 </div>
             </div>
         
             <div className="questions">
-                {this.state.quesList==''&&<Loading type="bars" color="#000000"/>}
+                {this.state.quesList===''&&<Loading type="bars" color="#000000"/>}
                 {this.state.quesList!==''&&this.renderQues()}
             </div>
                 {(this.state.staff||this.state.admin)&&(

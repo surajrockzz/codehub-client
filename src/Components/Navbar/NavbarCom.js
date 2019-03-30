@@ -61,6 +61,15 @@ import {
                 <NavLink href="/dashboard">Dashboard</NavLink>
               </NavItem>
               <NavItem>
+                <NavLink href="/assignments">assignments</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/colleges">colleges</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/users">users</NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink href="/logout">Log out</NavLink>
               </NavItem>
             </Nav>

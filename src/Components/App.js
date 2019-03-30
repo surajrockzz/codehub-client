@@ -14,6 +14,7 @@ import AssignmentsQues from './AssignmentsQues/AssignmentsQues.js'
 import Colleges from './Colleges/Colleges.js'
 import CollegeName from './Colleges/CollegeName.js'
 import UsersEdit from './Dashboard/UsersEdit/UsersEdit'
+import Footer  from './Footer/Footer'
 import './App.css';
 
 
@@ -24,7 +25,8 @@ class App extends Component {
         <div>
             <NavbarCom token={window.localStorage.getItem("JWT")}/>
             <Route exact path="/" component={Home}/>
-            <Route path="/dashboard" render={(props) => <DashBoard {...props} isAuthed={true} token={window.localStorage.getItem("JWT")} />}/>
+            <Route exact path="/dashboard" render={(props) => <DashBoard {...props} isAuthed={true} token={window.localStorage.getItem("JWT")} />}/>
+            <Route path="/dashboard/:id" render={(props) => <DashBoard {...props} isAuthed={true} token={window.localStorage.getItem("JWT")} />}/>
             <Route path="/login" component={Login}/>
             <Route path="/signup" component={SignUp}/>
             <Route path="/test"   render={(props) => <Test {...props}  token={window.localStorage.getItem("JWT")}/>}/>
@@ -35,6 +37,7 @@ class App extends Component {
             <Route path="/assignments/:id" render={(props) => <AssignmentsQues {...props}  token={window.localStorage.getItem("JWT")}/>}/>
             <Route exact path="/colleges" component={Colleges}/>
             <Route exact path="/colleges/:id" component={CollegeName}/>
+            <Footer/>
         </div>
       </BrowserRouter>
     );
