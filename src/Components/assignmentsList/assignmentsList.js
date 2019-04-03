@@ -69,7 +69,7 @@ class AssignmentsList extends React.Component{
             return(<div>
                 <div className="container">
                    <input type="text"/>
-                    <Button type="button">search</Button>
+                    <Button type="button" variant="contained" color="secondary" className={classes.button}>search</Button>
                    {(token.is_admin||token.is_staff)&&<Button variant="contained" color="secondary" className={classes.button} onClick={this.toggle}>add</Button> }
                 </div>
                 <div className="assignmentList">

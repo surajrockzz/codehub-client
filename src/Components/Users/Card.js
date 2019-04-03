@@ -25,6 +25,7 @@ class Card extends React.Component{
             staff: this.props.data.is_staff,
             visible:true
         }
+        console.log(props)
         this.handleChange = this.handleChange.bind(this)
     }
     handleChange(e){
@@ -57,6 +58,7 @@ class Card extends React.Component{
                     staff: response.data.is_staff,
                     visible:false
                 })
+                console.log(this.props)
             }
             }).catch((error) => {
                 console.log(error)

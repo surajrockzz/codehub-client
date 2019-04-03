@@ -8,7 +8,8 @@ class Login extends Component{
         super(props);
         this.state = {
             username:'',
-            password:''
+            password:'',
+            incorrect:false
         }
         this.setUsername = this.setUsername.bind(this);
         this.setPassword = this.setPassword.bind(this);
@@ -16,11 +17,13 @@ class Login extends Component{
     }
     setUsername(e){
         this.setState({
+            incorrect:false,
             username:e.target.value
         })
     }
     setPassword(e){
         this.setState({
+            incorrect:false,
             password:e.target.value
         })
     }
@@ -29,13 +32,17 @@ class Login extends Component{
                 email:this.state.username,
                 password:this.state.password
             })
-            .then(function (response) {
+            .then((response)=>{
                 window.localStorage.setItem("JWT",response.data.token)
-                alert("token-submitted")
                 window.location="/dashboard"
             })
-            .catch(function (error) {
-                console.log(error);
+            .catch((error)=> {
+                this.setState({
+                    incorrect:true,
+                    username:'',
+                    password:''
+
+                })
             });
     }
     render(){
@@ -46,7 +53,7 @@ class Login extends Component{
                         < img src = "https://via.placeholder.com/75" id="imgid"/>
                         <h3 >CodeHub Login</h3>
                         </div>
-                        
+                        {this.state.incorrect&&<p className="incorrect"> *username or password is incorrect</p>}
                         <FormGroup>
                             <Label for="Email">Email</Label>
                             <Input type="email" name="email" id="Email" placeholder="Enter email" onChange={this.setUsername} value={this.state.username}/>

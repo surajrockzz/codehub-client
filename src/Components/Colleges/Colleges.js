@@ -77,8 +77,8 @@ class Colleges extends Component{
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalHeader toggle={this.toggle}>Add new  College</ModalHeader>
                 <ModalBody>
-                <Input type="text" name="assignmentName" id="assignmentName" placeholder="enter hackerrank id" value={this.state.hkid} onChange={this.handleChange}/>
-                <Input type="text" name="assignmentName" id="assignmentName" placeholder="college name" value={this.state.name} onChange={this.handleChange}/>
+                <Input type="text" name="hkid" id="assignmentName" placeholder="enter hackerrank id" value={this.state.hkid} onChange={this.handleChange}/>
+                <Input type="text" name="name" id="assignmentName" placeholder="college name" value={this.state.name} onChange={this.handleChange}/>
                 </ModalBody>
                 <ModalFooter>
                 <Button variant="contained" color="primary" className={classes.button} onClick={this.toggle}>Submit</Button>{' '}

@@ -17,6 +17,7 @@
      padding-right:30%;
      padding-top:10%;
      padding-bottom:10%;
+     background-size: cover;
 }
 #logotext{
     padding-left:17%;
@@ -26,4 +27,6 @@
     margin-top: -20%;
     padding-left: 24%;
 }
-
+.incorrect{
+    color: red;
+}
